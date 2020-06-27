@@ -1,18 +1,29 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div >
+    <div class="main-container">
+      <card v-for="item of 10" v-bind:key="item">
+        holas    
+      </card>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import card from "@/components/card"
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    card
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  @import '../sass/variables';
+  @import '../sass/mixins';
+
+  .main-container {
+    @include container_display($flow: row wrap);
+  }
+</style>

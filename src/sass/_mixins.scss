@@ -1,0 +1,47 @@
+@import 'variables';
+
+@mixin container_display(
+    $display: flex, 
+    $flow: column, 
+    $align: center,
+    $justify: center,
+    $width: 100%
+    ) {
+        display: $display;
+        flex-flow: $flow;
+        align-items: $align;
+        justify-content: $justify;
+        width: $width;
+        box-sizing: border-box;
+    }
+
+@mixin breakpoint($size: $sm) {
+    @media (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin linkButton(
+    $bColor: $primary_color, 
+    $fColor: $ascent_color, 
+    $margin: 0 5px, 
+    $radius: 4px
+    ) {
+        cursor: pointer;
+        margin: $margin;
+        border-radius: $radius;
+        font-size: 20px;
+        padding: 3px;
+
+        &:active {
+            background-color: darken($color: $bColor, $amount: 8%);
+        }
+
+        &:hover {
+            background-color: darken($color: $bColor, $amount: 3%);
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
