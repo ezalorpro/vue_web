@@ -7,7 +7,7 @@
                     <a class="item">login</a>
                 </div>
             </transition>
-            <div v-show="showSidebarComponent"  class="spacer" v-on:click="closeSidebar()"></div>
+            <div v-show="showSidebarComponent" class="spacer" v-on:click="closeSidebar()"></div>
         </div>
     </transition>
 </template>
@@ -70,7 +70,7 @@ export default {
             background-color: #0000004d;
         }
 
-        @include slideIn($distance: -100%)
+        @include slideIn($distance: -100%);
     }
 
 </style>

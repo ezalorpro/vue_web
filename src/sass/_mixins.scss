@@ -84,3 +84,18 @@
         transform: translateX($distance);
     }
 }
+
+@mixin FadeIn($time: 0.3s, $opacity: 0) {
+    .slideIn-enter-active {
+        transition: opacity $time;
+    }
+
+    .slideIn-leave-active {
+        transition: opacity $time;
+    }
+
+    .slideIn-enter,
+    .slideIn-leave-to {
+        opacity: $opacity;
+    }
+}
