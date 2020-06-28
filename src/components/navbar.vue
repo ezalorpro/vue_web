@@ -31,6 +31,9 @@ export default {
     .navbar-container {
         color: $ascent_color;
         padding-left: 10px;
+        position: fixed;
+        z-index: 1;
+        height: 60px;
         background-color: $primary_color;
         grid-area: navbar;
         box-shadow: 0.3px 0.6px 0.1px darken($primary_color, 30%);

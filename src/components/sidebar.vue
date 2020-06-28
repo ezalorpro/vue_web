@@ -7,7 +7,9 @@
                     <a class="item">login</a>
                 </div>
             </transition>
-            <div v-show="showSidebarComponent" class="spacer" v-on:click="closeSidebar()"></div>
+            <transition name="FadeIn">
+                <div v-show="showSidebarComponent" class="spacer" v-on:click="closeSidebar()"></div>
+            </transition>
         </div>
     </transition>
 </template>
@@ -45,7 +47,8 @@ export default {
 
         .sidebar {
             position: fixed;
-            width: 25%;
+            padding: 5px 0;
+            width: 40%;
             z-index: 1;
             height: 100vh;
             background-color: $background_color;
@@ -57,7 +60,7 @@ export default {
                 @include linkButton(
                     $bColor: $background_color,
                     $fColor: $font_color,
-                    $margin: 0
+                    $margin: 5px 0
                 );
                 @include container_display($flow: column);
             }
@@ -71,6 +74,7 @@ export default {
         }
 
         @include slideIn($distance: -100%);
+        @include FadeIn();
     }
 
 </style>

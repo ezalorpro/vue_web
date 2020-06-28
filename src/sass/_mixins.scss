@@ -47,13 +47,14 @@
         }
     }
 
-@mixin btn-style($bColor: $primary_color,
+@mixin btn-style(
+    $bColor: $primary_color,
     $fColor: $background_color,
     $wButton: 100%
     ) {
         background-color: $bColor;
         color: $fColor;
-        border-radius: 4px;
+        border-radius: 2px;
         width: $wButton;
         border-style: none;
         cursor: pointer;
@@ -86,16 +87,16 @@
 }
 
 @mixin FadeIn($time: 0.3s, $opacity: 0) {
-    .slideIn-enter-active {
+    .FadeIn-enter-active {
         transition: opacity $time;
     }
 
-    .slideIn-leave-active {
+    .FadeIn-leave-active {
         transition: opacity $time;
     }
 
-    .slideIn-enter,
-    .slideIn-leave-to {
+    .FadeIn-enter,
+    .FadeIn-leave-to {
         opacity: $opacity;
     }
 }

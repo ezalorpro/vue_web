@@ -48,6 +48,7 @@ export default {
 
   .content {
     grid-area: content;
+    overflow: auto;
   }
 
 </style>

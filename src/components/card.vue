@@ -1,5 +1,9 @@
 <template>
-    <div class="main-container">
+    <div v-bind:class="{
+        'main-container': true, 
+        'onHover': hover
+        }"
+    >
         <slot></slot>
     </div>
 </template>
@@ -7,6 +11,12 @@
 <script>
 export default {
     name: 'card',
+    props: {
+        hover: {
+            type: Boolean,
+            default: false
+        }
+    }
 }
 </script>
 
@@ -15,9 +25,22 @@ export default {
     @import '../sass/mixins';
 
     .main-container{
-        margin: 5px;
+        margin: 10px;
         @include container_display($width: inherit);
         border-radius: 4px;
         box-shadow: 0.2px 0.4px 0.1px darken($background_color, 25%);
+        transition: 0.2s;
+        transition-property: all;
+
+    }
+
+    .onHover {
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 1px 1px 1px lighten($primary_color, 8%),
+            1px -1px 1px lighten($primary_color, 8%),
+            -1px 1px 1px lighten($primary_color, 8%),
+            -1px -1px 1px lighten($primary_color, 8%);
+        }
     }
 </style>
