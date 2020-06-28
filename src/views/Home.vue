@@ -1,8 +1,8 @@
 <template>
-  <div >
+  <div>
     <div class="main-container">
       <card v-for="item of 10" v-bind:key="item">
-        holas    
+        holas  sada  asd 
       </card>
     </div>
   </div>
@@ -24,6 +24,9 @@ export default {
   @import '../sass/mixins';
 
   .main-container {
-    @include container_display($flow: row wrap);
+    @include container_display($flow: row wrap, $align: flex-start, $width: inherit);
+    transition: 0.2s;
+    transition-property: all;
+    overflow: auto;
   }
 </style>

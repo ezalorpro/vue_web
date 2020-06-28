@@ -24,24 +24,63 @@
 @mixin linkButton(
     $bColor: $primary_color, 
     $fColor: $ascent_color, 
-    $margin: 0 5px, 
+    $margin: 0 10px, 
     $radius: 4px
     ) {
         cursor: pointer;
         margin: $margin;
         border-radius: $radius;
-        font-size: 20px;
+        font-size: 18px;
         padding: 3px;
+        user-select: none;
 
         &:active {
-            background-color: darken($color: $bColor, $amount: 8%);
+            background-color: darken($bColor, 8%);
         }
 
         &:hover {
-            background-color: darken($color: $bColor, $amount: 3%);
+            background-color: darken($bColor, 4%);
         }
 
         &:focus {
             outline: none;
         }
     }
+
+@mixin btn-style($bColor: $primary_color,
+    $fColor: $background_color,
+    $wButton: 100%
+    ) {
+        background-color: $bColor;
+        color: $fColor;
+        border-radius: 4px;
+        width: $wButton;
+        border-style: none;
+        cursor: pointer;
+        outline: none;
+        user-select: none;
+        @content;
+
+        &:hover {
+            background-color: darken($bColor, 4%);
+        }
+
+        &:active {
+            background-color: darken($bColor, 8%);
+        }
+    }
+
+@mixin slideIn($time: 0.3s, $distance: 100%) {
+    .slideIn-enter-active {
+        transition: transform $time;
+    }
+
+    .slideIn-leave-active {
+        transition: transform $time;
+    }
+
+    .slideIn-enter,
+    .slideIn-leave-to {
+        transform: translateX($distance);
+    }
+}

@@ -16,8 +16,7 @@ export default {
 
     .main-container{
         margin: 5px;
-        max-width: 300px;
-        @include container_display();
+        @include container_display($width: inherit);
         border-radius: 4px;
         box-shadow: 0.2px 0.4px 0.1px darken($background_color, 25%);
     }
