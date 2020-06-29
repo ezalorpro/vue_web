@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <div class="card-container">
         <slot></slot>
     </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     @import '../sass/variables';
     @import '../sass/mixins';
 
-    .main-container{
+    .card-container{
         margin: 10px;
         @include container_display($width: inherit);
         border-radius: 4px;

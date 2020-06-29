@@ -8,8 +8,12 @@
       </transition-group>
     </div>
     <div class="controls">
-      <button v-on:click="goLeft()" :disabled="currentIndex == 1">left</button>
-      <button v-on:click="goRight()" :disabled="currentIndex == countItems">right</button>
+      <button v-on:click="goLeft()" :disabled="currentIndex == 1" class="carousel-button">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </button>
+      <button v-on:click="goRight()" :disabled="currentIndex == countItems" class="carousel-button">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </button>
     </div>
   </div>
 </template>
@@ -68,7 +72,7 @@ export default {
     .carousel-content {
       overflow: hidden;
       @include container_display($flow: column, $justify: flex-start);
-      @include slideIn( 0.2s, 100%, 0, 0px);
+      @include slideIn( 1s, 100%, 0, 0px);
       padding: 10px;
 
     }

@@ -1,6 +1,6 @@
 <template>
     <transition name="slideIn">
-        <div v-show="showSidebarComponent" class="main-container">
+        <div v-show="showSidebarComponent" class="sidebar-container">
             <transition name="slideIn">
                 <div v-show="showSidebarComponent"  class="sidebar">
                     <a class="item">pokedex</a>
@@ -32,7 +32,7 @@ export default {
     @import '../sass/variables';
     @import '../sass/mixins';
 
-    .main-container {
+    .sidebar-container {
         display: inherit;
         position: fixed;
         top: 60px;

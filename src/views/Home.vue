@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="main-container">
+    <div class="home-container">
       <Carousel>
         <template v-for="item of 5"  v-slot:[item]>
           <Card v-bind:key="item">
@@ -42,7 +42,7 @@ export default {
   @import '../sass/variables';
   @import '../sass/mixins';
 
-  .main-container {
+  .home-container {
     @include container_display($flow: row wrap, $align: flex-start, $width: inherit);
     transition: 0.2s;
     transition-property: all;
