@@ -71,32 +71,42 @@
         }
     }
 
-@mixin slideIn($time: 0.3s, $distance: 100%) {
-    .slideIn-enter-active {
-        transition: transform $time;
+@mixin slideIn(
+    $time: 0.3s, 
+    $distance: 100%, 
+    $opacity: 1,
+    $height: inherit,
+    $class: 'slideIn'
+    ) {
+    .#{$class}-enter-active {
+        transition: transform $time ease;
     }
 
-    .slideIn-leave-active {
-        transition: transform $time;
+    .#{$class}-leave-active {
+        transition: transform $time ease;
+        height: $height;
+        opacity: $opacity;
     }
 
-    .slideIn-enter,
-    .slideIn-leave-to {
+    .#{$class}-enter,
+    .#{$class}-leave-to {
         transform: translateX($distance);
+        transform: translateZ($distance);
     }
+
 }
 
-@mixin FadeIn($time: 0.3s, $opacity: 0) {
-    .FadeIn-enter-active {
+@mixin FadeIn($time: 0.3s, $opacity: 0, $class: 'FadeIn') {
+    .#{$class}-enter-active {
         transition: opacity $time;
     }
 
-    .FadeIn-leave-active {
+    .#{$class}-leave-active {
         transition: opacity $time;
     }
 
-    .FadeIn-enter,
-    .FadeIn-leave-to {
+    .#{$class}-enter,
+    .#{$class}-leave-to {
         opacity: $opacity;
     }
 }

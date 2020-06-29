@@ -51,4 +51,9 @@ export default {
     overflow: auto;
   }
 
+  .generic-img {
+    width: 100%;
+    height: auto;
+  }
+
 </style>

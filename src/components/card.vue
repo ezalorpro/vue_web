@@ -1,22 +1,12 @@
 <template>
-    <div v-bind:class="{
-        'main-container': true, 
-        'onHover': hover
-        }"
-    >
+    <div class="main-container">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'card',
-    props: {
-        hover: {
-            type: Boolean,
-            default: false
-        }
-    }
+    name: 'Card'
 }
 </script>
 
