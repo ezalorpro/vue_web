@@ -75,7 +75,8 @@
     $time: 0.3s, 
     $distance: 100%, 
     $opacity: 1,
-    $height: inherit,
+    $height: 100%,
+    $width: 100%,
     $class: 'slideIn'
     ) {
     .#{$class}-enter-active {
@@ -84,7 +85,9 @@
 
     .#{$class}-leave-active {
         transition: transform $time ease;
+        position: absolute;
         height: $height;
+        width: $width;
         opacity: $opacity;
     }
 

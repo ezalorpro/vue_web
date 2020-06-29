@@ -20,6 +20,12 @@
             </div> 
           </Card>
         </template>
+        <template v-slot:5>
+          <img src="/images/logo.png"  width="100%" alt="logo">
+        </template>
+        <template v-slot:6>
+          <img src="/images/avatar.jpg" width="100%" alt="logo">
+        </template>
       </Carousel>
     </div>
   </div>

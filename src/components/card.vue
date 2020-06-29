@@ -16,6 +16,7 @@ export default {
 
     .card-container{
         margin: 10px;
+        background-color: $background_color;
         @include container_display($width: inherit);
         border-radius: 4px;
         box-shadow: 0.2px 0.4px 0.1px darken($background_color, 25%);
