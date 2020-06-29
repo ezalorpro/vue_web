@@ -1,8 +1,20 @@
 <template>
-  <div class="carousel-container" :style="{width: carousel_width, height: carousel_height}">
+  <div 
+  class="carousel-container" 
+  :style="{width: carousel_width, height: carousel_height}" 
+  v-touch:swipe.left="goRight" v-on:swipe.left.prevent="currentIndex == countItems"
+  v-touch:swipe.right="goLeft" v-on:swipe.right.prevent="currentIndex == 1"
+  >
     <div ref="carousel" :class="{'carousel-content': true}">
-        <transition v-for="(_, slot) of $slots" v-bind:key="slot" name="slideIn" mode="in-out">
-          <div class="carousel-item" v-show="slot == currentIndex">
+        <transition 
+        v-for="(_, slot) of $slots" 
+        v-bind:key="slot" 
+        v-bind:name="direction? 'slideInR' : 'slideInL'" mode="in-out"
+        >
+          <div 
+          class="carousel-item" 
+          v-show="slot == currentIndex"
+          >
             <slot :name="slot"></slot>
           </div>
         </transition>
@@ -40,29 +52,38 @@ export default {
         countItems: {
           type: Number,
           default: 0
-        }
+        },
+        direction: Boolean
       }
     },
     methods: {
-      goRight() {
-        this.currentIndex += 1;
+      goRight(param) {
+        if(param && this.currentIndex != this.countItems) {
+          this.currentIndex += 1;
+        } else if (!param) {
+          this.currentIndex += 1;
+        }
+        this.direction = true;
       },
-      goLeft() {
-        this.currentIndex -= 1;
+      goLeft(param) {
+        if(param && this.currentIndex != 1) {
+          this.currentIndex -= 1;
+        } else if (!param) {
+          this.currentIndex -= 1;
+        }
+        this.direction = false;
       }
     },
     mounted() {
       this.currentIndex = 1;
       this.countItems = 0;
-      /* eslint-disable no-unused-vars */
+      this.direction = true; 
+
       for (const key in this.$slots) {
         if (!isNaN(key)) {
           this.countItems += 1
-          console.log(this.countItems)
         }
       }
-      /* eslint-enable no-unused-vars */
-      console.log(this.countItems)
 
     }
 }
@@ -78,6 +99,8 @@ export default {
       padding: 0 30px;
       position: relative;
       overflow: hidden;
+      transition: .3s ease;
+
       @include container_display($width: inherit);
 
       .controls{
@@ -116,13 +139,16 @@ export default {
     .carousel-content {
       overflow: hidden;
       @include container_display($flow: column, $justify: flex-start);
-      @include slideIn($time: 0.3s,$distance: 100%, $width: calc(100% - 80px));
+      @include slideIn($distance12: -100%, $width: calc(100% - 80px), $class: 'slideInR');
+      @include slideIn($distance11: -100%, $width: calc(100% - 80px), $class: 'slideInL');
       padding: 0 10px;
 
     }
 
     .carousel-item{
       display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
     }
 </style>

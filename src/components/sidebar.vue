@@ -73,7 +73,7 @@ export default {
             background-color: #0000004d;
         }
 
-        @include slideIn($distance: -100%, $width: 40%);
+        @include slideIn($distance11: -100%, $distance12: -100%, $width: 40%, $height: 100%);
         @include FadeIn();
     }
 

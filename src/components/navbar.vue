@@ -17,7 +17,6 @@ export default {
     name: 'Navbar',
     methods: {
         menuClick() {
-            console.log('emitido')
             this.$emit('clicked', true)
         }
     }

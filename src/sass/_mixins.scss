@@ -73,9 +73,12 @@
 
 @mixin slideIn(
     $time: 0.3s, 
-    $distance: 100%, 
+    $distance11: 100%, 
+    $distance12: 100%,
+    $distance21: 0%,
+    $distance22: 0%,
     $opacity: 1,
-    $height: 100%,
+    $height: auto,
     $width: 100%,
     $class: 'slideIn'
     ) {
@@ -91,10 +94,20 @@
         opacity: $opacity;
     }
 
-    .#{$class}-enter,
+    .#{$class}-enter {
+        transform: translateX($distance11);
+    }
+
     .#{$class}-leave-to {
-        transform: translateX($distance);
-        transform: translateZ($distance);
+        transform: translateX($distance12);
+    }
+
+    .#{$class}-leave {
+        transform: translateX($distance21);
+    }
+
+    .#{$class}-enter-to {
+        transform: translateX($distance22);
     }
 
 }
