@@ -5,6 +5,8 @@
     :style="{width: carousel_width, height:carousel_height}"
     v-touch:swipe.left="goRight"
     v-touch:swipe.right="goLeft"
+    v-on:mouseover="allowNext = !allowNext"
+    v-on:mouseout="allowNext = !allowNext"
   >
     <div ref="carousel" class="carousel-content">
       <transition
@@ -44,6 +46,10 @@
       show_frame: {
         type: Boolean,
         default: false
+      },
+      carousel_time: {
+        type: Number,
+        default: 7000
       }
     },
     data() {
@@ -56,7 +62,15 @@
           type: Number,
           default: 0
         },
-        direction: Boolean
+        direction: Boolean,
+        allowNext: {
+          type: Boolean,
+          default: false
+        },
+        goingBack: {
+          type: Boolean,
+          default: false
+        },
       };
     },
     methods: {
@@ -75,6 +89,30 @@
           this.currentIndex -= 1;
         }
         this.direction = false;
+      },
+      goNext() {
+        if (this.allowNext) {
+          if (this.currentIndex != this.countItems && !this.goingBack) {
+            this.currentIndex += 1;
+            this.direction = true;
+            setTimeout(() => {this.goNext()}, this.carousel_time);
+          } else {
+            this.direction = false;
+            this.goingBack = true
+            setTimeout(() => {
+              if (this.currentIndex != 1) {
+                this.currentIndex -= 1
+                this.goNext()
+              } else {
+                this.currentIndex = 1
+                this.goingBack = false;
+                setTimeout(() => {this.goNext()}, this.carousel_time);
+              }
+            }, 150)
+          }
+        } else {
+          setTimeout(() => {this.goNext()}, this.carousel_time);
+        }
       }
     },
     mounted() {
@@ -87,6 +125,8 @@
           this.countItems += 1;
         }
       }
+
+      setTimeout(() => {this.goNext()}, this.carousel_time)
     }
   };
 </script>
@@ -129,11 +169,14 @@
         height: 100%;
         padding: 0;
         width: 40px;
-        background-color: #00000049;
+        background-color: #0000002a;
         transition: all 0.3s ease;
 
-        &i {
+        & i {
           color: #000;
+          text-shadow: -1px 1px 2px #d8d8d8,
+          1px -1px 2px #d8d8d8;
+          font-size: 40px;
         }
 
         &:focus {
@@ -141,7 +184,11 @@
         }
 
         &:active {
-          background-color: lighten($color: #000000ad, $amount: 20%);
+          background-color: darken($color: #000000ad, $amount: 20%);
+        }
+
+        &:disabled {
+          opacity: 0;
         }
       }
     }
@@ -152,17 +199,17 @@
     height: 100%;
     @include container_display($flow: column);
     @include slideIn(
-      $time: 0.4s,
-      $distance11: 150%,
-      $distance12: -150%,
+      $time: 0.6s,
+      $distance11: 200%,
+      $distance12: -200%,
       $width: calc(100% - 80px),
       $height: 100%,
       $class: "slideInR"
     );
     @include slideIn(
-      $time: 0.4s,
-      $distance11: -150%,
-      $distance12: 150%,
+      $time: 0.6s,
+      $distance11: -200%,
+      $distance12: 200%,
       $width: calc(100% - 80px),
       $height: 100%,
       $class: "slideInL"

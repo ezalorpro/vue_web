@@ -29,7 +29,7 @@
         </Card>
       </div>
       <div class="main-content">
-        <Carousel v-bind:show_frame="true" v-bind:carousel_height="'245px'">
+        <Carousel v-bind="{show_frame: false, carousel_height: '440px', carousel_width: '100%'}">
           <template v-slot:1>
             <img
               src="https://media.gettyimages.com/photos/someone-jumping-into-lake-tahoe-picture-id541993270?s=612x612"
@@ -81,7 +81,7 @@ export default {
   grid-template-columns: auto;
   transition: all 0.2s ease;
   align-items: flex-start;
-  @include breakpoint() {
+  @include breakpoint($md) {
     grid-template-areas: 
     "left center";
     grid-template-columns: 30% auto;
