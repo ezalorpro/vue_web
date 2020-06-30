@@ -29,26 +29,47 @@
         </Card>
       </div>
       <div class="main-content">
-        <Carousel v-bind="{show_frame: false, carousel_height: '440px', carousel_width: '100%'}">
+        <Carousel
+          v-bind="{show_frame: false, carousel_height: '440px', carousel_width: '100%', carousel_time: 4000}"
+        >
           <template v-slot:1>
             <img
+              loading="lazy"
               src="https://media.gettyimages.com/photos/someone-jumping-into-lake-tahoe-picture-id541993270?s=612x612"
               height="100%"
               alt="imagen"
             />
           </template>
           <template v-slot:2>
-            <img src="/images/logo.png" height="100%" alt="logo" />
+            <img
+              loading="lazy"
+              src="https://conceptodefinicion.de/wp-content/uploads/2014/05/imagen.jpg"
+              height="100%"
+              alt="logo"
+            />
           </template>
           <template v-slot:3>
             <img
-              src="https://media.gettyimages.com/photos/someone-jumping-into-lake-tahoe-picture-id541993270?s=612x612"
+              src="https://www.40defiebre.com/wp-content/uploads/2013/11/optimizacion.png"
               height="100%"
               alt="imagen"
             />
           </template>
           <template v-slot:4>
-            <img src="/images/avatar.jpg" height="100%" alt="logo" />
+            <img
+              loading="lazy"
+              src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/04/08/15863374252712.jpg"
+              height="100%"
+              alt="logo"
+            />
+          </template>
+          <template v-slot:5>
+            <img
+              loading="lazy"
+              src="https://hotbook.com.mx/wp-content/uploads/2019/04/hotbook-se-revela-la-primera-imagen-de-un-agujero-negro-portada.jpg"
+              height="100%"
+              alt="logo"
+            />
           </template>
         </Carousel>
       </div>
@@ -75,28 +96,27 @@ export default {
 
 .home-container {
   display: grid;
-  grid-template-areas: 
-  "left"
-  "center";
+  grid-template-areas:
+    "left"
+    "center";
   grid-template-columns: auto;
   transition: all 0.2s ease;
   align-items: flex-start;
   @include breakpoint($md) {
-    grid-template-areas: 
-    "left center";
+    grid-template-areas: "left center";
     grid-template-columns: 30% auto;
   }
 }
 
 .left-content {
   grid-area: left;
-  display:flex;
+  display: flex;
   justify-content: center;
 }
 
 .main-content {
   grid-area: center;
-  display:flex;
+  display: flex;
   justify-content: center;
 }
 
