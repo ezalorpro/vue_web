@@ -80,10 +80,11 @@
   $opacity: 1,
   $height: auto,
   $width: 100%,
-  $class: 'slideIn'
+  $class: 'slideIn',
   ) {
     .#{$class}-enter-active {
       transition: transform $time ease;
+      height: $height;
     }
 
     .#{$class}-leave-active {

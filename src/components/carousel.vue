@@ -1,13 +1,12 @@
 <template>
   <div
     class="carousel-container"
-    :style="{width: carousel_width, height: carousel_height}"
+    :class="{'show-frame': show_frame}"
+    :style="{width: carousel_width, height:carousel_height}"
     v-touch:swipe.left="goRight"
-    v-on:swipe.left.prevent="currentIndex == countItems"
     v-touch:swipe.right="goLeft"
-    v-on:swipe.right.prevent="currentIndex == 1"
   >
-    <div ref="carousel" :class="{'carousel-content': true}">
+    <div ref="carousel" class="carousel-content">
       <transition
         v-for="(_, slot) of $slots"
         v-bind:key="slot"
@@ -20,12 +19,12 @@
       </transition>
     </div>
     <div class="controls">
-      <button v-on:click="goLeft()" :disabled="currentIndex == 1" class="carousel-button">
-        <i class="material-icons">keyboard_arrow_left</i>
-      </button>
-      <button v-on:click="goRight()" :disabled="currentIndex == countItems" class="carousel-button">
-        <i class="material-icons">keyboard_arrow_right</i>
-      </button>
+    <button v-on:click="goLeft()" :disabled="currentIndex == 1" class="carousel-button">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </button>
+    <button v-on:click="goRight()" :disabled="currentIndex == countItems" class="carousel-button">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </button>
     </div>
   </div>
 </template>
@@ -36,11 +35,15 @@
     props: {
       carousel_width: {
         type: String,
-        default: "400px"
+        default: "100%"
       },
       carousel_height: {
         type: String,
-        default: "100%"
+        default: "300px"
+      },
+      show_frame: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -92,16 +95,26 @@
   @import "../sass/variables";
   @import "../sass/mixins";
 
+  .show-frame {
+    border: 2px solid $primary_color;
+    border-radius: 4px;
+  }
   .carousel-container {
     margin: 10px;
-    padding: 0 30px;
     position: relative;
     overflow: hidden;
     transition: 0.3s ease;
 
-    @include container_display($width: inherit);
+    @include container_display($width: auto);
 
+    &:hover {
+      .controls > .carousel-button{
+        opacity: 1;
+      }
+    }
+    
     .controls {
+      user-select: none;
       width: 100%;
       height: 100%;
       position: absolute;
@@ -112,11 +125,12 @@
       .carousel-button {
         border-style: none;
         display: block;
+        opacity: 0;
         height: 100%;
         padding: 0;
         width: 40px;
         background-color: #00000049;
-        transition: all 0.1s ease;
+        transition: all 0.3s ease;
 
         &i {
           color: #000;
@@ -135,24 +149,32 @@
 
   .carousel-content {
     overflow: hidden;
-    @include container_display($flow: column, $justify: flex-start);
+    height: 100%;
+    @include container_display($flow: column);
     @include slideIn(
-      $distance12: -100%,
+      $time: 0.4s,
+      $distance11: 150%,
+      $distance12: -150%,
       $width: calc(100% - 80px),
+      $height: 100%,
       $class: "slideInR"
     );
     @include slideIn(
-      $distance11: -100%,
+      $time: 0.4s,
+      $distance11: -150%,
+      $distance12: 150%,
       $width: calc(100% - 80px),
+      $height: 100%,
       $class: "slideInL"
     );
-    padding: 0 10px;
   }
 
   .carousel-item {
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 100%;
   }
 </style>

@@ -33,6 +33,7 @@
     height: 60px;
     background-color: $primary_color;
     grid-area: navbar;
+    transition: all 0.2s ease;
     box-shadow: 0.3px 0.6px 0.1px darken($primary_color, 30%);
     @include container_display($flow: row, $justify: flex-start);
 
@@ -53,6 +54,7 @@
       margin: 0 3px;
       font-style: italic;
       display: inherit;
+      transition: all 0.2s ease;
     }
 
     .spacerMobile {

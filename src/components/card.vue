@@ -17,7 +17,7 @@
   .card-container {
     margin: 10px;
     background-color: $background_color;
-    @include container_display($width: inherit);
+    @include container_display();
     border-radius: 4px;
     box-shadow: 0.2px 0.4px 0.1px darken($background_color, 25%);
     transition: 0.2s;
