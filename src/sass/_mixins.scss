@@ -1,128 +1,128 @@
 @import 'variables';
 
 @mixin container_display(
-    $display: flex, 
-    $flow: column, 
-    $align: center,
-    $justify: center,
-    $width: 100%
-    ) {
-        display: $display;
-        flex-flow: $flow;
-        align-items: $align;
-        justify-content: $justify;
-        width: $width;
-        box-sizing: border-box;
-    }
+  $display: flex,
+  $flow: column,
+  $align: center,
+  $justify: center,
+  $width: 100%
+  ) {
+    display: $display;
+    flex-flow: $flow;
+    align-items: $align;
+    justify-content: $justify;
+    width: $width;
+    box-sizing: border-box;
+}
 
 @mixin breakpoint($size: $sm) {
-    @media (min-width: $size) {
-        @content;
-    }
+  @media (min-width: $size) {
+    @content;
+  }
 }
 
 @mixin linkButton(
-    $bColor: $primary_color, 
-    $fColor: $ascent_color, 
-    $margin: 0 10px, 
-    $radius: 4px
-    ) {
-        cursor: pointer;
-        margin: $margin;
-        border-radius: $radius;
-        font-size: 18px;
-        padding: 3px;
-        user-select: none;
+  $bColor: $primary_color,
+  $fColor: $ascent_color,
+  $margin: 0 10px,
+  $radius: 4px
+  ) {
+    cursor: pointer;
+    margin: $margin;
+    border-radius: $radius;
+    font-size: 18px;
+    padding: 3px;
+    user-select: none;
 
-        &:active {
-            background-color: darken($bColor, 8%);
-        }
-
-        &:hover {
-            background-color: darken($bColor, 4%);
-        }
-
-        &:focus {
-            outline: none;
-        }
+    &:active {
+      background-color: darken($bColor, 8%);
     }
+
+    &:hover {
+      background-color: darken($bColor, 4%);
+    }
+
+    &:focus {
+      outline: none;
+    }
+}
 
 @mixin btn-style(
-    $bColor: $primary_color,
-    $fColor: $background_color,
-    $wButton: 100%
-    ) {
-        background-color: $bColor;
-        color: $fColor;
-        border-radius: 2px;
-        width: $wButton;
-        border-style: none;
-        cursor: pointer;
-        outline: none;
-        user-select: none;
-        @content;
+  $bColor: $primary_color,
+  $fColor: $background_color,
+  $wButton: 100%
+  ) {
+    background-color: $bColor;
+    color: $fColor;
+    border-radius: 2px;
+    width: $wButton;
+    border-style: none;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    @content;
 
-        &:hover {
-            background-color: darken($bColor, 4%);
-        }
-
-        &:active {
-            background-color: darken($bColor, 8%);
-        }
+    &:hover {
+      background-color: darken($bColor, 4%);
     }
 
+    &:active {
+      background-color: darken($bColor, 8%);
+    }
+}
+
 @mixin slideIn(
-    $time: 0.3s, 
-    $distance11: 100%, 
-    $distance12: 100%,
-    $distance21: 0%,
-    $distance22: 0%,
-    $opacity: 1,
-    $height: auto,
-    $width: 100%,
-    $class: 'slideIn'
-    ) {
+  $time: 0.3s,
+  $distance11: 100%,
+  $distance12: 100%,
+  $distance21: 0%,
+  $distance22: 0%,
+  $opacity: 1,
+  $height: auto,
+  $width: 100%,
+  $class: 'slideIn'
+  ) {
     .#{$class}-enter-active {
-        transition: transform $time ease;
+      transition: transform $time ease;
     }
 
     .#{$class}-leave-active {
-        transition: transform $time ease;
-        position: absolute;
-        height: $height;
-        width: $width;
-        opacity: $opacity;
+      transition: transform $time ease;
+      position: absolute;
+      height: $height;
+      width: $width;
+      opacity: $opacity;
     }
 
     .#{$class}-enter {
-        transform: translateX($distance11);
+      transform: translateX($distance11);
     }
 
     .#{$class}-leave-to {
-        transform: translateX($distance12);
+      transform: translateX($distance12);
     }
 
     .#{$class}-leave {
-        transform: translateX($distance21);
+      transform: translateX($distance21);
     }
 
     .#{$class}-enter-to {
-        transform: translateX($distance22);
+      transform: translateX($distance22);
     }
 
 }
 
 @mixin FadeIn($time: 0.3s, $opacity: 0, $class: 'FadeIn') {
-    .#{$class}-enter-active {
-        transition: opacity $time;
-    }
+  .#{$class}-enter-active {
+    transition: opacity $time;
+  }
 
-    .#{$class}-leave-active {
-        transition: opacity $time;
-    }
+  .#{$class}-leave-active {
+    transition: opacity $time;
+  }
 
-    .#{$class}-enter,
-    .#{$class}-leave-to {
-        opacity: $opacity;
-    }
+  .#{$class}-enter,
+  .#{$class}-leave-to {
+    opacity: $opacity;
+  }
 }
