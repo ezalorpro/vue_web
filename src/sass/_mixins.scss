@@ -28,6 +28,8 @@
   $radius: 4px
   ) {
     cursor: pointer;
+    color: $fColor;
+    text-decoration: none;
     margin: $margin;
     border-radius: $radius;
     font-size: 18px;

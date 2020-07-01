@@ -141,7 +141,7 @@
   }
 
   .carousel-container {
-    background-color: #131313;
+    background-color: darken($font_color, 15%);
     margin: 10px;
     position: relative;
     overflow: hidden;
@@ -175,7 +175,7 @@
         transition: all 0.3s ease;
 
         & i {
-          color: #000;
+          color: darken($font_color, 15%);
           text-shadow: -1px 1px 2px #d8d8d8,
           1px -1px 2px #d8d8d8;
           font-size: 40px;

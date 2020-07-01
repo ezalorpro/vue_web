@@ -4,9 +4,11 @@
       <i class="material-icons">menu</i>
     </button>
     <span class="spacerMobile"></span>
-    <a class="item title">Vuejs</a>
+    <router-link class="item title" to="/">Vuejs</router-link>
     <span class="spacerDesktop"></span>
     <a class="item">login</a>
+    <router-link class="item" to="/register">registrarse</router-link>
+    
   </div>
 </template>
 

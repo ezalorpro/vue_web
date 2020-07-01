@@ -88,7 +88,7 @@ import Card from "@/components/card";
 import Carousel from "@/components/carousel";
 
 export default {
-  name: "Home",
+  name: "home",
   components: {
     Card,
     Carousel
