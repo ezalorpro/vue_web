@@ -30,7 +30,13 @@
       </div>
       <div class="main-content">
         <Carousel
-          v-bind="{show_frame: false, carousel_height: '440px', carousel_width: '100%', carousel_time: 4000}"
+          style="border-radius: 4px"
+          v-bind="{
+            show_frame: false, 
+            carousel_height: '245px', 
+            carousel_width: '100%', 
+            carousel_time: 4000
+            }"
         >
           <template v-slot:1>
             <img

@@ -5,8 +5,8 @@
     :style="{width: carousel_width, height:carousel_height}"
     v-touch:swipe.left="goRight"
     v-touch:swipe.right="goLeft"
-    v-on:mouseover="allowNext = !allowNext"
-    v-on:mouseout="allowNext = !allowNext"
+    v-on:mouseover="allowNext = false"
+    v-on:mouseout="allowNext = true"
   >
     <div ref="carousel" class="carousel-content">
       <transition
@@ -139,7 +139,9 @@
     border: 2px solid $primary_color;
     border-radius: 4px;
   }
+
   .carousel-container {
+    background-color: #131313;
     margin: 10px;
     position: relative;
     overflow: hidden;
@@ -169,7 +171,7 @@
         height: 100%;
         padding: 0;
         width: 40px;
-        background-color: #0000002a;
+        background-color: #9696962a;
         transition: all 0.3s ease;
 
         & i {
@@ -202,7 +204,7 @@
       $time: 0.6s,
       $distance11: 200%,
       $distance12: -200%,
-      $width: calc(100% - 80px),
+      $width: 100%,
       $height: 100%,
       $class: "slideInR"
     );
@@ -210,7 +212,7 @@
       $time: 0.6s,
       $distance11: -200%,
       $distance12: 200%,
-      $width: calc(100% - 80px),
+      $width: 100%,
       $height: 100%,
       $class: "slideInL"
     );
