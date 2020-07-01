@@ -2,7 +2,9 @@
   <div class="layout">
     <Navbar v-on:clicked="showSidebarflag = !showSidebarflag" />
     <div class="content">
-      <slot></slot>
+      <transition name="FadeIn" mode="out-in">
+        <slot></slot>
+      </transition>
     </div>
     <Sidebar
       v-bind:showSidebarComponent="showSidebarflag"
@@ -30,6 +32,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../sass/mixins';
+
   .layout {
     display: grid;
     grid-template-rows: 60px calc(100vh - 60px);
@@ -43,5 +47,6 @@
   .content {
     grid-area: content;
     overflow: auto;
+    @include FadeIn($time: 0.15s)
   }
 </style>
