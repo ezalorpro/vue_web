@@ -77,6 +77,33 @@
               alt="logo"
             />
           </template>
+          <template v-slot:6>
+            <Card style="width: 50%;">
+              <div class="profile">
+                <div class="profile-left">
+                  <img src="/images/avatar.jpg" alt="holas" width="100px" class="profile-image" />
+                  <span>Usuario</span>
+                  <span>kleiver</span>
+                  <button type="button" class="button-edit">Editar</button>
+                </div>
+                <div class="profile-right">
+                  <span>
+                    Nombre
+                    <br />
+                  </span>
+                  <span>
+                    Kleiver
+                    <br />
+                  </span>
+                  <span>
+                    Email
+                    <br />
+                  </span>
+                  <span>kleiver@nisesupo.com</span>
+                </div>
+              </div>
+            </Card>
+          </template>
         </Carousel>
       </div>
     </div>
