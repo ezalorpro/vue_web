@@ -52,12 +52,16 @@
 @mixin btn-style(
   $bColor: $primary_color,
   $fColor: $background_color,
-  $wButton: 100%
+  $wButton: 100%,
+  $hButton: auto,
+  $padding: 5px,
   ) {
     background-color: $bColor;
     color: $fColor;
     border-radius: 2px;
     width: $wButton;
+    height: $hButton;
+    padding: $padding;
     border-style: none;
     cursor: pointer;
     outline: none;

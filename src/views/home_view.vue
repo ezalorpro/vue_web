@@ -5,7 +5,12 @@
         <Card>
           <div class="profile">
             <div class="profile-left">
-              <img src="/images/avatar.jpg" alt="holas" width="100px" class="profile-image" />
+              <img 
+                src="/images/avatar.jpg" 
+                alt="holas" 
+                width="100px" 
+                class="profile-image" 
+              />
               <span>Usuario</span>
               <span>kleiver</span>
               <button type="button" class="button-edit">Editar</button>
@@ -144,7 +149,7 @@ export default {
     }
 
     .button-edit {
-      @include btn-style($ascent_color, $font_color);
+      @include btn-style($ascent_color, $font_color, $wButton: 80px);
     }
   }
 

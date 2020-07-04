@@ -32,7 +32,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../sass/mixins';
+  @import "../sass/mixins";
 
   .layout {
     display: grid;
@@ -47,6 +47,6 @@
   .content {
     grid-area: content;
     overflow: auto;
-    @include FadeIn($time: 0.15s)
+    @include FadeIn($time: 0.15s);
   }
 </style>

@@ -21,12 +21,12 @@
       </transition>
     </div>
     <div class="controls">
-    <button v-on:click="goLeft()" :disabled="currentIndex == 1" class="carousel-button">
-      <i class="material-icons">keyboard_arrow_left</i>
-    </button>
-    <button v-on:click="goRight()" :disabled="currentIndex == countItems" class="carousel-button">
-      <i class="material-icons">keyboard_arrow_right</i>
-    </button>
+      <button v-on:click="goLeft()" :disabled="currentIndex == 1" class="carousel-button">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </button>
+      <button v-on:click="goRight()" :disabled="currentIndex == countItems" class="carousel-button">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </button>
     </div>
   </div>
 </template>
