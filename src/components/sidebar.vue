@@ -48,7 +48,7 @@ export default {
   .sidebar {
     position: fixed;
     padding: 5px 0;
-    width: 40%;
+    width: 45%;
     z-index: 1;
     height: 100vh;
     background-color: $background_color;
@@ -76,7 +76,7 @@ export default {
   @include slideIn(
     $distance11: -100%,
     $distance12: -100%,
-    $width: 40%,
+    $width: 45%,
     $height: 100%
   );
   @include FadeIn();

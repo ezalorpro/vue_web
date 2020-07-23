@@ -148,7 +148,7 @@ export default {
   }
 
   .invalidInput {
-    border-color: $second_color;
+    border-color: $second_color !important;
 
     &  + .input-label {
       position: absolute;
@@ -156,9 +156,13 @@ export default {
       transform: translateY(-120%);
       width: fit-content;
       background-color: #fff;
-      color: $second_color;
+      color: $second_color !important;
       display: flex;
       justify-content: center;
+    }
+
+    &:focus + .input-label + .input-icons {
+      color: $second_color !important;
     }
   }
 }
