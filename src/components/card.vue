@@ -18,9 +18,9 @@ export default {
   margin: 10px;
   background-color: $background_color;
   @include container_display();
-  border-radius: 4px;
-  box-shadow: 0.2px 0.4px 0.1px darken($background_color, 25%),
-  0px 0px 0.8px darken($background_color, 25%);
+  border-radius: 0px;
+  box-shadow: 0.2px 0.4px 0.1px darken($background_color, 50%),
+  0px 0px 0.8px darken($background_color, 50%);
   transition: 0.2s;
   transition-property: all;
 }

@@ -1,11 +1,15 @@
 <template>
   <div class="input-container">
     <input 
-      v-bind:value="value" v-on:input="$emit('input', $event.target.value)" 
+      v-bind:value="value" v-on:input="validators" 
       :id="identifier" 
       :required="required"
       :type="type" 
-      class="input-el" 
+      class="input-el"
+      v-on:change="validators"
+      :class="{
+        'validInput': validInput && type == 'email' && value.length > 0, 
+        'invalidInput': !validInput && type == 'email' && value.length > 0}"
       />
     <label :for="identifier" class="input-label">{{label}}</label>
     <i class="material-icons input-icons">{{icon}}</i>
@@ -15,6 +19,14 @@
 <script>
 export default {
   name: "customInput",
+  data() {
+    return {
+      validInput: {
+        type: Boolean,
+        default: false
+      }
+    }
+  },
   props: {
     value: {
       type: String
@@ -37,7 +49,23 @@ export default {
       type: String,
       default: 'text'
     }
+  },
+  methods: {
+    validators: function ($event) {
+      this.$emit('input', $event.target.value)
+      if (this.type == 'email' && $event.target.value.length  > 0) {
+        this.validInput = this.validEmail($event.target.value)
+      }
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+  },
+  mounted() {
+    this.validInput = false;
   }
+
 };
 </script>
 
@@ -60,7 +88,7 @@ export default {
     outline-style: none;
     border: none;
     font-size: 16px;
-    border-bottom: 1px solid #44444486;
+    border-bottom: 1.5px solid #44444486;
     margin: 10px 0;
     padding: 10px 4px;
     width: 100%;
@@ -117,6 +145,21 @@ export default {
 
   .input-container:focus {
     border-color: $primary_color;
+  }
+
+  .invalidInput {
+    border-color: $second_color;
+
+    &  + .input-label {
+      position: absolute;
+      transform: scale(0.8);
+      transform: translateY(-120%);
+      width: fit-content;
+      background-color: #fff;
+      color: $second_color;
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 </style>
