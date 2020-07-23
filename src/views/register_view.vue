@@ -127,7 +127,10 @@ export default {
     @include container_display($width: auto);
 
     .row-container {
-      @include container_display($flow: row)
+      @include container_display($flow: column);
+      @include breakpoint() {
+        @include container_display($flow: row);
+      }
     }
   }
 
