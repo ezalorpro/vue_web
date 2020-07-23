@@ -38,7 +38,7 @@
           style="border-radius: 4px"
           v-bind="{
             show_frame: false, 
-            carousel_height: '245px', 
+            carousel_height: '253px', 
             carousel_width: '100%', 
             carousel_time: 4000
             }"
